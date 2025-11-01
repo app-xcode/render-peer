@@ -1,15 +1,14 @@
-import express from 'express';
-import { PeerServer } from 'peer';
+const express = require('express');
+const { PeerServer } = require('peer');
 
 const app = express();
 const port = process.env.PORT || 10000;
 
-// Buat instance PeerJS server
 const peerServer = PeerServer({
   port,
   path: '/myapp',
   proxied: true,
-  allow_discovery: true
+  allow_discovery: true,
 });
 
 app.use('/myapp', peerServer);
