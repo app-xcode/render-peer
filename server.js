@@ -1,25 +1,23 @@
-const express = require('express');
-const { ExpressPeerServer } = require('peer');
+const express = require("express");
+const { ExpressPeerServer } = require("peer");
 
 const app = express();
 const port = process.env.PORT || 8080;
 
-// Buat PeerJS server sebagai middleware Express
+// Integrasi PeerJS ke Express
 const peerServer = ExpressPeerServer(app, {
-  path: '/myapp',
+  path: "/myapp",
   allow_discovery: true,
-  proxied: true
+  proxied: true,
 });
 
-// Pasangkan PeerJS ke route /myapp
-app.use('/myapp', peerServer);
+app.use("/myapp", peerServer);
 
-// Route utama hanya untuk test koneksi Railway
-app.get('/', (req, res) => {
-  res.send('✅ PeerJS Server running on Railway');
+// Endpoint root supaya Railway tahu server hidup
+app.get("/", (req, res) => {
+  res.send("✅ PeerJS Server running on Railway");
 });
 
-// Jalankan Express
 app.listen(port, () => {
   console.log(`🚀 PeerJS server is running on port ${port}`);
 });
