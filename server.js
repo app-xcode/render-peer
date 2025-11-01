@@ -1,13 +1,11 @@
 const express = require('express');
-const { PeerServer } = require('peer');
+const { ExpressPeerServer } = require('peer');
 
 const app = express();
 const port = process.env.PORT || 10000;
 
-const peerServer = PeerServer({
-  port,
+const peerServer = ExpressPeerServer(app, {
   path: '/myapp',
-  proxied: true,
   allow_discovery: true,
 });
 
