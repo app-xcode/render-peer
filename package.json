@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
-  },
+  }, 
   "dependencies": {
     "peer": "^1.0.2",
     "express": "^4.19.2"
